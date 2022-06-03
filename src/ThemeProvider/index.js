@@ -63,6 +63,8 @@ const theme = {
     headerColor: "#f9f9f9",
     buttonColor: "#232A3A",
     gray: "#b0b0b0",
+    radioTexts: "#909090",
+    countButtons: "#E9EEEF"
   },
   shadow: "0 4px 8px 0 rgba(0,0,0,.05)",
   backgrounds: {

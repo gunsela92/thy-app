@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Select, Popover } from "antd";
+import { Select, Popover, Radio } from "antd";
 
 const { Option } = Select;
 
@@ -68,6 +68,12 @@ export const CountSelector = styled(Popover)`
   margin-right: 10px;
 `;
 
+export const PopoverTitle = styled.span`
+  color: ${({ theme }) => theme.colors.radioTexts};
+  font-size: ${({ theme }) => theme.fontSizes.tiny};
+  font-weight: ${({ theme }) => theme.fonts.bold};
+`;
+
 export const CountIcon = styled(FontAwesomeIcon)`
   color: ${({ theme }) => theme.colors.gray};
 `;
@@ -84,9 +90,52 @@ export const ContinueButton = styled.button`
   outline: none;
   max-height: 60px;
   cursor: pointer;
+  
+  &:disabled {
+    background: ${({ theme }) => theme.colors.gray};
+  }
 `;
 
 export const ContinueIcon = styled(FontAwesomeIcon)`
   font-size: 34px;
   color: ${({ theme }) => theme.colors.white};
+`;
+
+export const RadioWrapper = styled(Radio)`
+  color: ${({ theme }) => theme.colors.radioTexts};
+  font-size: ${({ theme }) => theme.fontSizes.extraSmall};
+  font-weight: ${({ theme }) => theme.fonts.bold};
+`;
+
+export const CountWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid ${({ theme }) => theme.colors.gray};
+  padding: 10px 0;
+  
+  & > span {
+    font-size: ${({ theme }) => theme.fontSizes.tiny};
+  }
+`;
+
+export const CountChangerContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const CountChanger = styled.button`
+  background: ${({ theme }) => theme.colors.countButtons};
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin: 0 3px;
+  cursor: pointer;
+  
+  &:active {
+    background: ${({ theme }) => theme.colors.gray};
+    transition: all .3s;
+  }
 `;
