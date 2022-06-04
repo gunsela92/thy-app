@@ -16,5 +16,5 @@ export const SearchTitle = styled.div`
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
   font-size: ${({ theme }) => theme.fontSizes.title};
-  font-family: ${({ theme }) => theme.fonts.light};
+  font-family: ${({ theme }) => theme.fonts.extraLight};
 `;

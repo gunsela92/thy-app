@@ -1,28 +1,36 @@
 import React, {useEffect, useState} from "react";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import {getStorage} from "../../Utils/storageUtils";
+// eslint-disable-next-line no-unused-vars
+import {FlightDetails, FlightSelectionWrapper, FlightTitle, PromotionSwitch, PromotionWrapper} from "./style";
+import FlightList from "../../Components/FlightList";
 
 const FlightSelectionPage = () => {
   const navigate = useNavigate();
-  const params = useLocation();
+  const params = useParams();
   const [flightData, setFlightData] = useState([]);
+  const [promotionActive, setPromotionActive] = useState(false);
+  const {origin, destination, personCount, selectedClass} = params;
 
   useEffect(() => {
-    if (!params.state) {
+    if (!origin || !destination || !personCount || !selectedClass) {
       navigate("/");
-    } else {
-      const { flights } = params.state;
-      setFlightData(flights);
     }
+    const flightData = getStorage("flights");
+    const flights = flightData?.flights?.filter((flight) => flight?.originAirport?.name === origin && flight?.destinationAirport?.name === destination);
+    setFlightData(flights);
   }, [params]);
 
-
-
   return (
-    <div>
-      {flightData?.map((e, index) => (
-        <div key={index}>{e?.arrivalDateTimeDisplay}</div>
-      ))}
-    </div>
+    <FlightSelectionWrapper>
+      <FlightTitle>Uçuş</FlightTitle>
+      <FlightDetails>{flightData[0]?.originAirport?.city?.name} - {flightData[0]?.destinationAirport?.city?.name}, {personCount} Yolcu</FlightDetails>
+      <PromotionWrapper>
+        Promosyon Kodu
+        <PromotionSwitch onChange={() => setPromotionActive(!promotionActive)}/>
+      </PromotionWrapper>
+      <FlightList flightData={flightData} promotionActive={promotionActive}/>
+    </FlightSelectionWrapper>
   );
 };
 

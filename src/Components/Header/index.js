@@ -1,12 +1,13 @@
 import React from "react";
 import {HeaderNavText, HeaderNavUrl, HeaderWrapper} from "./style";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
+  const {pathname} = useLocation();
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper path={pathname.includes("flight-selection")}>
       <HeaderNavUrl onClick={() => navigate("/")}>turkishairlines.com</HeaderNavUrl>
       <HeaderNavText>search<b>Flight Challenge</b></HeaderNavText>
     </HeaderWrapper>

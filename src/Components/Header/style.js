@@ -9,18 +9,18 @@ export const HeaderWrapper = styled.div`
   height: 40px;
   margin: 0 auto;
   position: absolute;
-  border-bottom: ${({ theme }) => `1px solid ${theme.colors.white}`};
+  border-bottom: ${({ theme, path }) => path ? `1px solid ${theme.colors.black}` : `1px solid ${theme.colors.white}`};
   top: 20px;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: ${({ theme, path }) => path ? theme.colors.black : theme.colors.white};
 `;
 
 export const HeaderNavUrl = styled.div`
-  color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
   font-weight: bold;
 `;
 
 export const HeaderNavText = styled.span`
-  color: ${({ theme }) => theme.colors.white};
+  cursor: pointer;
 `;

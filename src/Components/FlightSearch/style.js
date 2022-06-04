@@ -62,10 +62,12 @@ export const CountSelector = styled(Popover)`
   cursor: pointer;
   width: 100px;
   background-color: ${({ theme }) => theme.colors.buttonColor};
-  padding: 19px 10px;
+  padding: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-right: 10px;
+  align-items: end;
+  height: 60px;
 `;
 
 export const PopoverTitle = styled.span`
@@ -76,10 +78,17 @@ export const PopoverTitle = styled.span`
 
 export const CountIcon = styled(FontAwesomeIcon)`
   color: ${({ theme }) => theme.colors.gray};
+  font-size: ${({ theme }) => theme.fontSizes.extraLarge};
 `;
 
 export const PersonCountWrapper = styled.span`
   color: ${({ theme }) => theme.colors.white};
+  position: relative;
+  bottom: 12px;
+  float: right;
+  display: block;
+  width: 100%;
+  text-align: right;
 `;
 
 export const ContinueButton = styled.button`

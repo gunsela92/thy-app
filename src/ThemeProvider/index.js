@@ -5,6 +5,7 @@ import InterBold from "../assets/fonts/Inter/Inter-Bold.otf";
 import Inter from "../assets/fonts/Inter/Inter-Regular.otf";
 import InterItalic from "../assets/fonts/Inter/Inter-Italic.otf";
 import InterSemibold from "../assets/fonts/Inter/Inter-SemiBold.otf"
+import InterExtraLight from "../assets/fonts/Inter/Inter-ExtraLight-BETA.otf";
 import PropTypes from "prop-types";
 
 export const GlobalStyle = createGlobalStyle`
@@ -15,6 +16,10 @@ export const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Interlight';
     src: url(${InterLight});
+  }
+  @font-face {
+    font-family: 'InterExtralight';
+    src: url(${InterExtraLight});
   }
   @font-face {
     font-family: 'Interbold';
@@ -44,15 +49,6 @@ export const GlobalStyle = createGlobalStyle`
   /* ScrollBar */
 `;
 
-const breakPoints = {
-  xs: 468,
-  sm: 600,
-  m: 768,
-  md: 900,
-  lg: 1200,
-  xl: 1536,
-};
-
 const theme = {
   colors: {
     white: "#FFFFFF",
@@ -64,15 +60,18 @@ const theme = {
     buttonColor: "#232A3A",
     gray: "#b0b0b0",
     radioTexts: "#909090",
-    countButtons: "#E9EEEF"
+    countButtons: "#E9EEEF",
+    borderColor: "#E8E8E8",
   },
   shadow: "0 4px 8px 0 rgba(0,0,0,.05)",
   backgrounds: {
     mainBackground: "#063048",
+    filterBackground: "#242A37"
   },
   fonts: {
     regular: "Interregular",
     light: "Interlight",
+    extraLight: "InterExtraLight",
     bold: "Interbold",
     italic: "Interitalic",
     semibold: "Intersemibold",
@@ -86,7 +85,6 @@ const theme = {
     extraLarge: "20px",
     title: "24px"
   },
-  breakPoints,
 };
 
 const MainThemeProvider = ({ children }) => {
