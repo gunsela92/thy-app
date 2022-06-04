@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Collapse } from "antd";
+import {Collapse, Radio} from "antd";
 
 const { Panel } = Collapse;
 
@@ -67,6 +67,16 @@ export const FlightCardWrapper = styled.div`
   box-shadow: ${({theme}) => theme.shadow};
   background-color: ${({theme}) => theme.colors.white};
   min-height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  
+  > hr {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const FlightCardTimes = styled.div`
@@ -85,5 +95,50 @@ export const FlightCountryCode = styled.span`
 export const FlightCountryName = styled.span`
   color: ${({ theme }) => theme.colors.radioTexts};
   font-size: ${({ theme }) => theme.fontSizes.extraSmall};
-  font-weight: ${({ theme }) => theme.fonts.bold};
+  font-family: ${({ theme }) => theme.fonts.semibold};
+`;
+
+export const FlightDuration = styled.div`
+  color: ${({ theme }) => theme.colors.radioTexts};
+  font-size: ${({ theme }) => theme.fontSizes.extraSmall};
+  margin:0 20px 0 40px;
+  white-space: nowrap;
+  text-align: center;
+  > span {
+    font-size: ${({ theme }) => theme.fontSizes.small};
+    font-family: ${({ theme }) => theme.fonts.semibold};
+    color: ${({ theme }) => theme.colors.black};
+  }
+`;
+
+export const PriceBoxes = styled.div`
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:row;
+`;
+
+export const PriceRadioButtons = styled(Radio)`
+  color: ${({ theme }) => theme.colors.radioTexts};
+  font-size: ${({ theme }) => theme.fontSizes.extraSmall};
+  font-family: ${({ theme }) => theme.fonts.semibold};
+  
+  > span:not(.ant-radio) {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor}; 
+  }
+`;
+
+export const PriceTexts = styled.div`
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  white-space:nowrap;
+  font-family: ${({ theme }) => theme.fonts.semibold};
+  
+  > span {
+    font-size: ${({ theme }) => theme.fontSizes.extraSmall};
+    color: ${({ theme }) => theme.colors.radioTexts};
+    font-family: ${({ theme }) => theme.fonts.regular};
+  }
 `;

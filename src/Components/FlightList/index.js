@@ -5,9 +5,9 @@ import {
   FlightCard,
   FlightCardInfo,
   FlightCards, FlightCardTimes,
-  FlightCardWrapper, FlightCountryCode, FlightCountryName,
+  FlightCardWrapper, FlightCountryCode, FlightCountryName, FlightDuration,
   FlightListHeader,
-  FlightListWrapper
+  FlightListWrapper, PriceBoxes, PriceRadioButtons, PriceTexts
 } from "./style";
 import {useParams} from "react-router-dom";
 
@@ -41,16 +41,34 @@ const FlightList = ({flightData, promotionActive}) => {
             <FlightCountryCode>{flightInfo?.originAirport?.city?.code}</FlightCountryCode>
             <FlightCountryName>{flightInfo?.originAirport?.city?.name}</FlightCountryName>
           </FlightCardTimes>
+          <hr />
+          <FlightCardTimes>
+            {flightInfo?.departureDateTimeDisplay}
+            <FlightCountryCode>{flightInfo?.originAirport?.city?.code}</FlightCountryCode>
+            <FlightCountryName>{flightInfo?.originAirport?.city?.name}</FlightCountryName>
+          </FlightCardTimes>
+          <FlightDuration>
+            Uçuş Süresi <br/>
+            <span>{flightInfo?.flightDuration}</span>
+          </FlightDuration>
         </FlightCardWrapper>
         <FlightCardWrapper>
-          <FlightCardTimes>
-            {flightInfo?.arrivalDateTimeDisplay}
-          </FlightCardTimes>
+          <PriceBoxes>
+            <PriceRadioButtons value={"Economy"}>ECONOMY</PriceRadioButtons>
+            <PriceTexts>
+              <span>Yolcu Başına</span>
+              {flightInfo?.fareCategories?.ECONOMY?.subcategories[0]?.price?.currency + " " + flightInfo?.fareCategories?.ECONOMY?.subcategories[0]?.price?.amount}
+            </PriceTexts>
+          </PriceBoxes>
         </FlightCardWrapper>
         <FlightCardWrapper>
-          <FlightCardTimes>
-            {flightInfo?.arrivalDateTimeDisplay}
-          </FlightCardTimes>
+          <PriceBoxes>
+            <PriceRadioButtons value={"Business"}>BUSINESS</PriceRadioButtons>
+            <PriceTexts>
+              <span>Yolcu Başına</span>
+              {flightInfo?.fareCategories?.BUSINESS?.subcategories[0]?.price?.currency + " " + flightInfo?.fareCategories?.BUSINESS?.subcategories[0]?.price?.amount}
+            </PriceTexts>
+          </PriceBoxes>
         </FlightCardWrapper>
       </FlightCardInfo>
     )

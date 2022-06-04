@@ -113,7 +113,7 @@ export const ContinueIcon = styled(FontAwesomeIcon)`
 export const RadioWrapper = styled(Radio)`
   color: ${({ theme }) => theme.colors.radioTexts};
   font-size: ${({ theme }) => theme.fontSizes.extraSmall};
-  font-weight: ${({ theme }) => theme.fonts.bold};
+  font-family: ${({ theme }) => theme.fonts.semibold};
 `;
 
 export const CountWrapper = styled.div`
