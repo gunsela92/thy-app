@@ -4,7 +4,7 @@ import FlightSearch from "../../Components/FlightSearch";
 
 const HomePage = () => {
   return (
-    <HomePageWrapper>
+    <HomePageWrapper data-testid="mainScreen">
       <SearchTitle>
         Merhaba
         <br />

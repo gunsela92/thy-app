@@ -14,7 +14,7 @@ const Routing = () => {
         <Routes>
           <Route path="/" element={<HomePage/>}/>
           <Route path="/flight-selection/:origin/:destination/:personCount/:selectedClass" element={<FlightSelectionPage/>}/>
-          <Route path="/result/:result" element={<ResultPage/>}/>
+          <Route path="/result/:result/:price" element={<ResultPage/>}/>
         </Routes>
       </main>
     </BrowserRouter>

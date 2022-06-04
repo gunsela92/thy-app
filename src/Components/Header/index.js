@@ -7,7 +7,7 @@ const Header = () => {
   const {pathname} = useLocation();
 
   return (
-    <HeaderWrapper path={pathname.includes("flight-selection")}>
+    <HeaderWrapper path={pathname !== "/"}>
       <HeaderNavUrl onClick={() => navigate("/")}>turkishairlines.com</HeaderNavUrl>
       <HeaderNavText>search<b>Flight Challenge</b></HeaderNavText>
     </HeaderWrapper>

@@ -62,6 +62,7 @@ const theme = {
     radioTexts: "#909090",
     countButtons: "#E9EEEF",
     borderColor: "#E8E8E8",
+    success: "#00C853",
   },
   shadow: "0 4px 8px 0 rgba(0,0,0,.05)",
   backgrounds: {

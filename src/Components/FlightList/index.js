@@ -22,10 +22,11 @@ import {
   FlightCategory, FlightCurrency, FlightPrice, FlightRights, SelectFlight
 } from "./style";
 import {faAngleDown} from "@fortawesome/free-solid-svg-icons";
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 
 const FlightList = ({flightData, promotionActive}) => {
   const params = useParams();
+  const navigate = useNavigate();
   const {selectedClass} = params;
   const [selectedSortType, setSelectedSortType] = useState("price");
   const [flightClass, setFlightClass] = useState("");
@@ -141,7 +142,10 @@ const FlightList = ({flightData, promotionActive}) => {
                       <span key={rightIndex}>{right}</span>
                     ))}
                   </FlightRights>
-                  <SelectFlight disabled={promotionActive && category?.brandCode !== "ecoFly"}>Uçuşu Seç</SelectFlight>
+                  <SelectFlight disabled={promotionActive && category?.brandCode !== "ecoFly"} 
+                    onClick={() => navigate(`/result/${category?.status === "AVAILABLE" ? "success" : "error"}/${promotionActive ? category?.price?.amount / 2 : category?.price?.amount}`)}>
+                    Uçuşu Seç
+                  </SelectFlight>
                 </FlightCard>
               ))}
             </FlightCardsWrapper>

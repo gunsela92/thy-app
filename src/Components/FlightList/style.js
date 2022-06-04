@@ -34,6 +34,11 @@ export const FilterButtons = styled.button`
   padding: 5px 15px;
   outline: none;
   cursor: pointer;
+  
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.white};
+    color:${({theme}) => theme.backgrounds.filterBackground};
+  }
 `;
 
 export const FlightBoxes = styled(Collapse)`

@@ -38,4 +38,5 @@ export const PromotionSwitch = styled(Switch)`
 export const PromotionText = styled.div`
   font-size: ${({theme}) => theme.fontSizes.tiny};
   margin-top: 20px;
+  line-height: 2rem;
 `;
