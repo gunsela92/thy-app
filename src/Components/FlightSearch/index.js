@@ -11,7 +11,7 @@ import {
   SearchWrapper
 } from "./style";
 import {getStorage} from "../../Utils/storageUtils";
-import {faPlaneDeparture, faPlaneArrival, faCalendarAlt, faMale, faUsers, faAngleRight} from "@fortawesome/free-solid-svg-icons";
+import {faPlaneDeparture, faPlaneArrival, faCalendarAlt, faMale, faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import {useNavigate} from "react-router-dom";
 
 const FlightSearch = () => {
@@ -115,7 +115,9 @@ const FlightSearch = () => {
         trigger="click" visible={popoverVisible}
         onVisibleChange={() => setPopoverVisible(!popoverVisible)}>
         <span>
-          <CountIcon icon={personCount === 1 ? faMale : faUsers} />
+          {[...Array(personCount)].map((e, i) => (
+            <CountIcon icon={faMale} key={i}/>
+          ))}
           <PersonCountWrapper>{personCount}</PersonCountWrapper>
         </span>
       </CountSelector>

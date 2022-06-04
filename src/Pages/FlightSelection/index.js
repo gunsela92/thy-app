@@ -2,7 +2,14 @@ import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {getStorage} from "../../Utils/storageUtils";
 // eslint-disable-next-line no-unused-vars
-import {FlightDetails, FlightSelectionWrapper, FlightTitle, PromotionSwitch, PromotionWrapper} from "./style";
+import {
+  FlightDetails,
+  FlightSelectionWrapper,
+  FlightTitle,
+  PromotionSwitch,
+  PromotionText,
+  PromotionWrapper
+} from "./style";
 import FlightList from "../../Components/FlightList";
 
 const FlightSelectionPage = () => {
@@ -28,6 +35,11 @@ const FlightSelectionPage = () => {
       <PromotionWrapper>
         Promosyon Kodu
         <PromotionSwitch onChange={() => setPromotionActive(!promotionActive)}/>
+        <PromotionText>
+          Promosyon Kodu seçeneği ile tüm Economy kabini Eco Fly paketlerini %50 indirimle satın alabilirsiniz!
+          <br/>
+          Promosyon Kodu seçeneği aktifken Eco Fly paketi haricinde seçim yapılamamaktadır.
+        </PromotionText>
       </PromotionWrapper>
       <FlightList flightData={flightData} promotionActive={promotionActive}/>
     </FlightSelectionWrapper>

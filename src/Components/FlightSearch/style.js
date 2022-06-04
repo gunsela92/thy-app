@@ -78,7 +78,7 @@ export const PopoverTitle = styled.span`
 
 export const CountIcon = styled(FontAwesomeIcon)`
   color: ${({ theme }) => theme.colors.gray};
-  font-size: ${({ theme }) => theme.fontSizes.extraLarge};
+  font-size: ${({ theme }) => theme.fontSizes.large};
 `;
 
 export const PersonCountWrapper = styled.span`

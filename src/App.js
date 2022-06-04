@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import Routing from "./Routes";
 import {getStorage, setStorage} from "./Utils/storageUtils";
-import flights from "./flights.json";
+import flights from "./core/data/flights.json";
 
 function App() {
 

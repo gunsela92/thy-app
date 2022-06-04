@@ -5,7 +5,7 @@ export const FlightSelectionWrapper = styled.div`
   display:flex;
   flex-direction: column;
   justify-content: center;
-  max-width: calc(100% - 400px);
+  max-width: 1000px;
   margin: 60px auto 0;
 `;
 
@@ -33,4 +33,9 @@ export const PromotionWrapper = styled.div`
 export const PromotionSwitch = styled(Switch)`
   max-width: 40px;
   margin-left: 20px;
+`;
+
+export const PromotionText = styled.div`
+  font-size: ${({theme}) => theme.fontSizes.tiny};
+  margin-top: 20px;
 `;
