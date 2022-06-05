@@ -4,25 +4,29 @@ import {
   ArrowIcon,
   FilterButtons,
   FlightBox,
-  FlightBoxInfo,
   FlightBoxes,
+  FlightBoxInfo,
+  FlightCard,
+  FlightCardInfo,
+  FlightCardsWrapper,
   FlightCardTimes,
   FlightCardWrapper,
+  FlightCategory,
   FlightCountryCode,
   FlightCountryName,
+  FlightCurrency,
   FlightDuration,
   FlightListHeader,
   FlightListWrapper,
+  FlightPrice,
+  FlightRights,
   PriceBoxes,
   PriceRadioButtons,
   PriceTexts,
-  FlightCardsWrapper,
-  FlightCard,
-  FlightCardInfo,
-  FlightCategory, FlightCurrency, FlightPrice, FlightRights, SelectFlight
+  SelectFlight
 } from "./style";
 import {faAngleDown} from "@fortawesome/free-solid-svg-icons";
-import {useParams, useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 const FlightList = ({flightData, promotionActive}) => {
   const params = useParams();
@@ -39,11 +43,9 @@ const FlightList = ({flightData, promotionActive}) => {
   const sortFlights = useMemo(() => {
     if (flightData?.length) {
       if (selectedSortType === "price") {
-        const newFlights = flightData?.sort((a, b) => a?.fareCategories[flightClass?.toUpperCase()]?.subcategories[0]?.price?.amount - b?.fareCategories[flightClass?.toUpperCase()]?.subcategories[0]?.price?.amount);
-        return newFlights
+        return flightData?.sort((a, b) => a?.fareCategories[flightClass?.toUpperCase()]?.subcategories[0]?.price?.amount - b?.fareCategories[flightClass?.toUpperCase()]?.subcategories[0]?.price?.amount)
       } else {
-        const newFlights = flightData?.sort((a, b) => new Date(`July 20, 2021 ${a?.arrivalDateTimeDisplay} `) - new Date(`July 20, 2021 ${b?.arrivalDateTimeDisplay}`))
-        return newFlights
+        return flightData?.sort((a, b) => a?.arrivalDateTimeDisplay?.localeCompare(b?.arrivalDateTimeDisplay))
       }
     } else {
       return []
@@ -52,7 +54,7 @@ const FlightList = ({flightData, promotionActive}) => {
 
   const handleAccordionClick = (index) => {
     if (activeTabs?.includes(index)) {
-      setActiveTabs(activeTabs.filter(tab => tab !== index))
+      setActiveTabs(activeTabs?.filter(tab => tab !== index))
     } else {
       setActiveTabs([...activeTabs, index])
     }
@@ -100,8 +102,7 @@ const FlightList = ({flightData, promotionActive}) => {
               onChange={handleRadio}>BUSINESS</PriceRadioButtons>
             <PriceTexts>
               <span>Yolcu Başına</span>
-              {flightInfo?.fareCategories?.BUSINESS?.subcategories[0]?.price?.currency}
-              {promotionActive ? flightInfo?.fareCategories?.BUSINESS?.subcategories[0]?.price?.amount / 2 : flightInfo?.fareCategories?.BUSINESS?.subcategories[0]?.price?.amount}
+              {flightInfo?.fareCategories?.BUSINESS?.subcategories[0]?.price?.currency} {flightInfo?.fareCategories?.BUSINESS?.subcategories[0]?.price?.amount}
             </PriceTexts>
             <ArrowIcon icon={faAngleDown}/>
           </PriceBoxes>
@@ -133,7 +134,7 @@ const FlightList = ({flightData, promotionActive}) => {
                         {category?.price?.currency}
                       </FlightCurrency>
                       <FlightPrice>
-                        {promotionActive ? category?.price?.amount / 2 : category?.price?.amount}
+                        {promotionActive && category?.brandCode === "ecoFly" ? category?.price?.amount / 2 : category?.price?.amount}
                       </FlightPrice>
                     </div>
                   </FlightCardInfo>
