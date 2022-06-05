@@ -144,7 +144,7 @@ const FlightList = ({flightData, promotionActive}) => {
                     ))}
                   </FlightRights>
                   <SelectFlight disabled={promotionActive && category?.brandCode !== "ecoFly"} 
-                    onClick={() => navigate(`/result/${category?.status === "AVAILABLE" ? "success" : "error"}/${promotionActive ? category?.price?.amount / 2 : category?.price?.amount}`)}>
+                    onClick={() => navigate(`/result/${category?.status === "AVAILABLE" ? "success" : "error"}/${promotionActive && category?.brandCode === "ecoFly" ? category?.price?.amount / 2 : category?.price?.amount}`)}>
                     Uçuşu Seç
                   </SelectFlight>
                 </FlightCard>

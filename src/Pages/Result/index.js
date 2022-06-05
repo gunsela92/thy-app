@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {faCheckCircle, faTimesCircle} from "@fortawesome/free-solid-svg-icons";
 import {
@@ -15,6 +15,13 @@ import {
 const ResultPage = () => {
   const {result, price} = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!result || !price || isNaN(price)) {
+      navigate("/");
+    }
+  }, [price]);
+
 
   return (
     <ResultPageWrapper>
